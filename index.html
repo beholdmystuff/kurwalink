@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title></title>
-        <meta property="og:image" content="/dej.jpg" />
+        <meta property="og:image" content="dej.jpg" />
         <style media="screen">
             :root
             {
@@ -287,6 +287,7 @@
                 }
             }
 
+            let display = true; //display ui
             if (window.location.search)
             {
                 setTimeout(()=>
@@ -305,17 +306,19 @@
                 {
                     try
                     {
-                        console.log(params)
                         let link = decodeURIComponent(atob(decodeURIComponent(params.url)));
-                        console.log(link)
+                        display = false;
                         setTimeout(()=> {
                             window.location.assign(link);
                         }, 300);
-                    } catch (e) {console.log(e) } //silence errors
+                    } catch (e)
+                    {
+                        console.log(e)
+                    } //silence errors
                 }
             }
 
-            setTimeout(()=>
+            if (display)
             {
                 let url = document.createElement("input")
                 url.setAttribute("type", "text");
@@ -337,7 +340,7 @@
 
                 document.body.appendChild(url);
                 document.body.appendChild(create);
-            }, 500);
+            }
         </script>
     </body>
 </html>
