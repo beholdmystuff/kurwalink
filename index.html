@@ -249,7 +249,7 @@
                         if (moanCount > 10)
                             return;
                         else if (moanCount > 9)
-                            msg.textContent += " " + moans[Math.floor(Math.random() + (moans.length - 1))];
+                            msg.textContent += " " + moans[Math.floor(Math.random() * moans.length)];
                         else
                             msg.textContent += " HARDER!";
                         moanCount++;
