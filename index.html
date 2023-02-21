@@ -57,6 +57,7 @@
                 text-align: center;
                 margin: 0 auto;
                 cursor: pointer;
+                user-select: none;
             }
             .msg
             {
@@ -197,7 +198,7 @@
     </head>
     <body>
         <script type="text/javascript">
-            let moans = ["Ooooh!", "Senpai!", "Yes daddy!", "Mwaaaah!", "Is it in yet?", "Aaah-prrrt!"];
+            let moans = ["Ooooh!", "Oh, senpai!", "Yes daddy!", "Mwaaaah!", "Is it in yet?", "Aaah-prrrt!", "Yhmhmmhmhmmmh..."];
             let moanCount = 1;
             function copyToClipboard(string)
             {
@@ -246,6 +247,7 @@
                     }
                     else
                     {
+                        console.log(moans[Math.floor(Math.random() * moans.length)])
                         if (moanCount > 10)
                             return;
                         else if (moanCount > 9)
