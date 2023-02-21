@@ -232,7 +232,7 @@
 
                 if (url.match(regex))
                 {
-                    copyToClipboard(window.location.origin + "/?url=" + btoa(url));
+                    copyToClipboard(window.location.origin + window.location.pathname + "?url=" + btoa(url));
                     let crappy = document.querySelector(".crappy");
                     if (crappy)
                         crappy.remove()
@@ -301,15 +301,21 @@
                     params[(splat[0][0] != "?") ? splat[0] : splat[0].slice(1)] = splat[1];
                 });
 
-                try
+                if (params.url)
                 {
-                    let link = decodeURIComponent(atob(decodeURIComponent(params.url)));
-                    setTimeout(()=> {
-                        window.location.assign(link);
-                    }, 500);
-                } catch (e) {console.log(e) } //silence errors
+                    try
+                    {
+                        console.log(params)
+                        let link = decodeURIComponent(atob(decodeURIComponent(params.url)));
+                        console.log(link)
+                        setTimeout(()=> {
+                            window.location.assign(link);
+                        }, 300);
+                    } catch (e) {console.log(e) } //silence errors
+                }
             }
-            else
+
+            setTimeout(()=>
             {
                 let url = document.createElement("input")
                 url.setAttribute("type", "text");
@@ -331,7 +337,7 @@
 
                 document.body.appendChild(url);
                 document.body.appendChild(create);
-            }
+            }, 500);
         </script>
     </body>
 </html>
